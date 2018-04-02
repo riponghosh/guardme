@@ -65,8 +65,18 @@
                <input class="offer_range_slider" />
             </div>
             <div class="col_full">
-               <label>Date:</label>
-               <input type="datetime" name="daterange" value="" />
+               <label>Date Range:</label>
+               <input type="date" name="min_date" value="" id="min_date" class="form-control"/>
+
+               <center> To </center>
+               <input type="date" name="max_date" value="" id="max_date" class="form-control" />
+            </div>
+            <div class="col_full">
+               <label>Time Range:</label>
+               <input type="time" name="min_time" value="" id="min_time" class="form-control"/>
+
+               <center> To </center>
+               <input type="time" name="max_time" value="" id="max_time" class="form-control" />
             </div>
 
             <div class="col_full">

@@ -84,6 +84,7 @@ class JobsController extends Controller
     public function getJobListings()
     {
         $jobs = $this->jobRepository->getJobListings(10);
+        //dd($jobs);
 
         $user = auth()->guard('api')->user();
         $user_id = null;

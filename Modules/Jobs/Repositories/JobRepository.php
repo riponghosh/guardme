@@ -103,6 +103,26 @@ class JobRepository
             $query = $query->where('offer', '<=', request('max_offer'));
         }
 
+        if(request('min_date')){
+            $query = $query->where('starts', '>=', request('min_date'));
+        }
+        if(request('max_date')){
+            $query = $query->where('ends', '<=', request('max_date'));
+        }
+
+        if(request('min_time')){
+            $time = date('i', strtotime(request('min_time')));
+            $newtimestamp = strtotime(request('min_date').'+ '.$time.' minute');
+            $datetime= date('Y-m-d H:i:s', $newtimestamp);
+            $query = $query->where('starts', '>=', $datetime);
+        }
+        if(request('max_time')){
+            $time = date('i', strtotime(request('max_time')));
+            $newtimestamp = strtotime(request('max_date').'+ '.$time.' minute');
+            $datetime= date('Y-m-d H:i:s', $newtimestamp);
+            $query = $query->where('ends', '<=', $datetime);
+        }
+
         return $query->simplePaginate($limit);
     }
 

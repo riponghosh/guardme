@@ -18,6 +18,14 @@ new window.App({
                     min : 0,
                     max : 0
                 },
+                date : {
+                    min : 0,
+                    max : 0
+                },
+                time : {
+                    min : 0,
+                    max : 0
+                },
                 categories : [],
             },
             selectedJob : null,
@@ -40,16 +48,20 @@ new window.App({
                     categories : filter.categories,
                     min_offer : filter.offer.min,
                     max_offer : filter.offer.max,
+                    min_date : filter.date.min,
+                    max_date : filter.date.max,
+                    min_time : filter.time.min,
+                    max_time : filter.time.max,
                 };
             }
 
             vm.jobs.loading = true;
-
+            console.log(params);
             window.axios.get(url, {params : params})
                 .then(function (response) {
                     if(filter) vm.jobs.data = [];
                     vm.jobs.loading = false;
-
+                    console.log(response);
                     response.data.data.forEach(function (job) {
 
                         var exists = window._.find(vm.jobs.data, function (item) {
@@ -156,13 +168,21 @@ new window.App({
             },
         });
 
-        
-          $('input[name="daterange"]').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY h:mm A'
-                }
-            });
+        $( "#min_date" ).change(function() {
+          vm.filter.date.min = $(this).val();
+        });
+
+        $( "#max_date" ).change(function() {
+          vm.filter.date.max = $(this).val();
+        });
+        $( "#min_time" ).change(function() {
+          vm.filter.time.min = $(this).val();
+        });
+
+        $( "#max_time" ).change(function() {
+          vm.filter.time.max = $(this).val();
+        });
+
+
     }
 });
