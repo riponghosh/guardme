@@ -96,6 +96,10 @@ class JobRepository
             });
         }
 
+        if(request('companies')){
+            $query = $query->where('company_id', '=', request('companies'));
+        }
+
         if(request('min_offer')){
             $query = $query->where('offer', '>=', request('min_offer'));
         }

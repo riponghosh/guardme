@@ -13,6 +13,10 @@ new window.App({
                 data : [],
                 loading : false
             },
+            companies : {
+                data : [],
+                loading : false
+            },
             filter : {
                 offer : {
                     min : 0,
@@ -27,6 +31,7 @@ new window.App({
                     max : 0
                 },
                 categories : [],
+                companies : 0,
                 day:0,
             },
             selectedJob : null,
@@ -97,6 +102,20 @@ new window.App({
                     vm.categories.loading = false;
                 });
         },
+        loadCompanies : function () {
+            var vm = this;
+            vm.companies.loading = true;
+
+            window.axios.get('/api/app/companies')
+                .then(function (response) {
+
+                    response.data.forEach(function (company) {
+                        vm.companies.data.push(company);
+                    });
+
+                    vm.categories.loading = false;
+                });
+        },
         filterJobs : _.debounce(function (newVal) {
             this.getJobListings(newVal)
         }, 2000),
@@ -156,6 +175,7 @@ new window.App({
     mounted : function(){
         const vm = this;
         this.loadCategories();
+        this.loadCompanies();
         this.getJobListings();
 
         $(".offer_range_slider").ionRangeSlider({

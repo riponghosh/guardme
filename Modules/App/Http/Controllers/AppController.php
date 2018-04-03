@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Modules\App\Http\Resources\CategoryResource;
+use Modules\Company\Http\Resources\CompanyResource;
 use Modules\App\Http\Resources\CitiesResource;
 use Modules\App\Http\Resources\CountiesResource;
 use Modules\App\Http\Resources\SectorResource;
 use Modules\App\Models\Category;
+use Modules\Company\Models\Company;
 use Modules\App\Models\City;
 use Modules\App\Models\County;
 use Modules\App\Models\Sector;
@@ -30,6 +32,11 @@ class AppController extends Controller
     public function getCategories()
     {
         return CategoryResource::collection(Category::all());
+    }
+
+    public function getcompanies()
+    {
+        return CompanyResource::collection(Company::all());
     }
 
     public function getSectors()

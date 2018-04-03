@@ -109,10 +109,10 @@
 
             <div class="col_full">
                <label>Company:</label>
-               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="day" id="single_day" value="1">
-                  <label class="form-check-label" for="single_day">
-                     Single day
+               <div class="form-check" v-for="company in companies.data">
+                  <input class="form-check-input" type="radio" name="company" :id="'company_'+company.id" :value="company.id"  v-model="filter.companies">
+                  <label class="form-check-label" :for="'company_'+company.id">
+                     @{{ company.name }}
                   </label>
                </div>
             </div>

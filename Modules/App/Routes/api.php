@@ -17,7 +17,7 @@ Route::group(['prefix' => 'app'], function (){
     Route::get('counties', 'AppController@getCounties');
     Route::get('counties/{county_id}/cities', 'AppController@getCities');
     Route::get('categories', 'AppController@getCategories');
-    Route::get('companies', 'AppController@companies');
+    Route::get('companies', 'AppController@getcompanies');
     Route::get('sectors', 'AppController@getSectors');
     Route::get('broadcasts-config', 'AppController@getBroadcastsConfig');
 });
