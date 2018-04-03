@@ -106,6 +106,17 @@
                   </div>
                </div>
             </div>
+
+            <div class="col_full">
+               <label>Company:</label>
+               <div class="form-check">
+                  <input class="form-check-input" type="radio" name="day" id="single_day" value="1">
+                  <label class="form-check-label" for="single_day">
+                     Single day
+                  </label>
+               </div>
+            </div>
+
          </div>
       </div>
    </div>
