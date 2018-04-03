@@ -27,6 +27,7 @@ new window.App({
                     max : 0
                 },
                 categories : [],
+                day:0,
             },
             selectedJob : null,
             application : {
@@ -182,6 +183,11 @@ new window.App({
         $( "#max_time" ).change(function() {
           vm.filter.time.max = $(this).val();
         });
+        $('input[name=day]').change(function(){
+
+            vm.filter.day= $('input[name=day]:checked').val();
+        })
+
 
 
     }

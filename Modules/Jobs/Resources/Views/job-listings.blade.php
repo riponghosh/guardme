@@ -78,6 +78,21 @@
                <center> To </center>
                <input type="time" name="max_time" value="" id="max_time" class="form-control" />
             </div>
+            <div class="col_full">
+               <label>Day:</label>
+               <div class="form-check">
+                  <input class="form-check-input" type="radio" name="day" id="single_day" value="1">
+                  <label class="form-check-label" for="single_day">
+                     Single day
+                  </label>
+               </div>
+               <div class="form-check">
+                  <input class="form-check-input" type="radio" name="day" id="multiple_day" value="0">
+                  <label class="form-check-label" for="multiple_day">
+                     Multiple days
+                  </label>
+               </div>
+            </div>
 
             <div class="col_full">
                <label>Category: <small class="uk-text-meta">(Choose all that apply)</small></label>

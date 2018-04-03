@@ -123,6 +123,17 @@ class JobRepository
             $query = $query->where('ends', '<=', $datetime);
         }
 
+        if(request('day')){
+            $date = new DateTime(date('Y-m-d')." 00:00:00");
+            //$date->modify("+23 hours");
+            //$date->modify("+59 hours");
+            $start= $date->format("Y-m-d H:i:s");
+            $date = new DateTime(date('Y-m-d')." 23:59:59");
+            $end= $date->format("Y-m-d H:i:s");
+            $query = $query->where('starts', '>=', $start);
+            $query = $query->where('ends', '<=', $end);
+        }
+
         return $query->simplePaginate($limit);
     }
 
