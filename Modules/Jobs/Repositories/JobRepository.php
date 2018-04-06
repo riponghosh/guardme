@@ -99,12 +99,22 @@ class JobRepository
         if(request('companies')){
             $query = $query->where('company_id', '=', request('companies'));
         }
+        if(request('star')){
+            $query = $query->where('rating', '=', request('star'));
+        }
 
         if(request('min_offer')){
             $query = $query->where('offer', '>=', request('min_offer'));
         }
         if(request('max_offer')){
             $query = $query->where('offer', '<=', request('max_offer'));
+        }
+
+        if(request('min_job_complete')){
+            $query = $query->where('completed_at', '>=', request('min_job_complete'));
+        }
+        if(request('max_job_complete')){
+            $query = $query->where('completed_at', '<=', request('max_job_complete'));
         }
 
         if(request('min_date')){

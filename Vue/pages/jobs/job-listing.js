@@ -17,6 +17,14 @@ new window.App({
                 data : [],
                 loading : false
             },
+            countries : {
+                data : [],
+                loading : false
+            },
+            cities : {
+                data : [],
+                loading : false
+            },
             filter : {
                 offer : {
                     min : 0,
@@ -30,8 +38,13 @@ new window.App({
                     min : 0,
                     max : 0
                 },
+                job_complete : {
+                    min : 0,
+                    max : 0
+                },
                 categories : [],
                 companies : 0,
+                star : 0,
                 day:0,
             },
             selectedJob : null,
@@ -52,12 +65,16 @@ new window.App({
             if(filter){
                 params = {
                     categories : filter.categories,
+                    companies : filter.companies,
                     min_offer : filter.offer.min,
                     max_offer : filter.offer.max,
                     min_date : filter.date.min,
                     max_date : filter.date.max,
                     min_time : filter.time.min,
                     max_time : filter.time.max,
+                    min_job_complete : filter.job_complete.min,
+                    max_job_complete : filter.job_complete.max,
+                    star : filter.star,
                 };
             }
 
@@ -113,7 +130,21 @@ new window.App({
                         vm.companies.data.push(company);
                     });
 
-                    vm.categories.loading = false;
+                    vm.companies.loading = false;
+                });
+        },
+        loadCounteries : function () {
+            var vm = this;
+            vm.countries.loading = true;
+
+            window.axios.get('/api/app/counties')
+                .then(function (response) {
+
+                    response.data.forEach(function (country) {
+                        vm.countries.data.push(country);
+                    });
+
+                    vm.countries.loading = false;
                 });
         },
         filterJobs : _.debounce(function (newVal) {
@@ -176,7 +207,9 @@ new window.App({
         const vm = this;
         this.loadCategories();
         this.loadCompanies();
+        this.loadCounteries();
         this.getJobListings();
+
 
         $(".offer_range_slider").ionRangeSlider({
             type: "double",
@@ -202,6 +235,9 @@ new window.App({
 
         $( "#max_time" ).change(function() {
           vm.filter.time.max = $(this).val();
+        });
+        $( "#input" ).change(function() {
+            vm.filter.star=$(this).val();
         });
         $('input[name=day]').change(function(){
 

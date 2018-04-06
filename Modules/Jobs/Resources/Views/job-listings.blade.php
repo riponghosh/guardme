@@ -66,18 +66,41 @@
             </div>
             <div class="col_full">
                <label>Date Range:</label>
-               <input type="date" name="min_date" value="" id="min_date" class="form-control"/>
+               <div class="input-daterange input-group">
+                  
+                  <input type="date" name="min_date" value="" id="min_date" class="form-control"/>
 
-               <center> To </center>
-               <input type="date" name="max_date" value="" id="max_date" class="form-control" />
+                  <div class="input-group-prepend"><div class="input-group-text">to</div></div>
+                  <input type="date" name="max_date" value="" id="max_date" class="form-control"/>
+               </div>
             </div>
             <div class="col_full">
                <label>Time Range:</label>
-               <input type="time" name="min_time" value="" id="min_time" class="form-control"/>
+               <div class="input-daterange input-group">
+                  
+                  <input type="time" name="min_time" value="" id="min_time" class="form-control"/>
 
-               <center> To </center>
-               <input type="time" name="max_time" value="" id="max_time" class="form-control" />
+                  <div class="input-group-prepend"><div class="input-group-text">to</div></div>
+                  <input type="time" name="max_time" value="" id="max_time" class="form-control" />
+               </div>
             </div>
+
+            <div class="col_full">
+               <label>Jobs Completed Range:</label>
+               <div class="input-daterange input-group">
+                  <input type="date" value="" class="form-control tleft" placeholder="MM/DD/YYYY" v-model="filter.job_complete.min">
+                  <div class="input-group-prepend"><div class="input-group-text">to</div></div>
+                  <input type="date" value="" class="form-control tleft" placeholder="MM/DD/YYYY" v-model="filter.job_complete.max">
+               </div>
+            </div>
+
+            <div class="col_full">
+               <label>Star Rating Range:</label>
+               <div class="white-section">
+                  <input id="input" type="number" class="rating" max="5" name="star" data-size="sm" style="overflow: hidden;" v-model="filter.star">
+               </div>
+            </div>
+
             <div class="col_full">
                <label>Day:</label>
                <div class="form-check">
@@ -108,11 +131,20 @@
             </div>
 
             <div class="col_full">
-               <label>Company:</label>
-               <div class="form-check" v-for="company in companies.data">
-                  <input class="form-check-input" type="radio" name="company" :id="'company_'+company.id" :value="company.id"  v-model="filter.companies">
-                  <label class="form-check-label" :for="'company_'+company.id">
-                     @{{ company.name }}
+               <label>Country:</label>
+               <div class="form-check" v-for="country in countries.data">
+                  <input class="form-check-input" type="radio" name="country" :id="'country_'+country.id" :value="country.id">
+                  <label class="form-check-label" :for="'country_'+country.id">
+                     @{{ country.name }}
+                  </label>
+               </div>
+            </div>
+            <div class="col_full">
+               <label>Cities:</label>
+               <div class="form-check" v-for="city in cities.data">
+                  <input class="form-check-input" type="radio" name="city" :id="'city_'+city.id" :value="city.id">
+                  <label class="form-check-label" :for="'city_'+city.id">
+                     @{{ city.name }}
                   </label>
                </div>
             </div>
@@ -185,6 +217,7 @@
 
 @push('scripts')
    <script src="/build/js/jobs/job-listings.min.js"></script>
+   <script src="/build/js/star-rating.js"></script>
 
    <script>
 
@@ -192,5 +225,6 @@
 @endpush
 
 @push('styles')
+<link rel="stylesheet" href="/build/css/bs-rating.css" type="text/css" />
 
 @endpush
