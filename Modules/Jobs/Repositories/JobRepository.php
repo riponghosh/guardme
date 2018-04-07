@@ -148,6 +148,37 @@ class JobRepository
             $query = $query->where('ends', '<=', $end);
         }
 
+
+        // for search page
+
+        if(request('search_type')&&request('search_string')){
+            $query = $query->where('title', 'like', '%' . request('search_string') . '%');
+        }
+
+        if(request('sort')){
+            if (request('sort')=='Ending Soon') {
+                $query = $query->orderBy('ends', 'asc');
+            }
+            if (request('sort')=='Newly Added') {
+                $query = $query->orderBy('created_at', 'asc');
+            }
+            if (request('sort')=='Starting Soon') {
+                $query = $query->orderBy('starts', 'asc');
+            }
+            if (request('sort')=='Height Offer') {
+                $query = $query->orderBy('offer', 'desc');
+            }
+            if (request('sort')=='Lowest Offer') {
+                $query = $query->orderBy('offer', 'asc');
+            }
+            if (request('sort')=='Height Application') {
+                // $query = $query->orderBy('created_at', 'asc')
+            }
+            if (request('sort')=='Lowest Application') {
+                // $query = $query->orderBy('created_at', 'asc')
+            }
+        }
+
         return $query->simplePaginate($limit);
     }
 

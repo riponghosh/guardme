@@ -53,6 +53,7 @@ mix
     .js('Vue/pages/jobs/job-details.js', 'public/build/js/jobs/job-details.min.js')
     .js('Vue/pages/jobs/job-payment.js', 'public/build/js/jobs/job-payment.min.js')
     .js('Vue/pages/jobs/job-listing.js', 'public/build/js/jobs/job-listings.min.js')
+    .js('Vue/pages/jobs/job-search-listing.js', 'public/build/js/jobs/job-search-listings.min.js')
     .js('Vue/pages/jobs/manage-job-schedule.js', 'public/build/js/backend/jobs/manage-job-schedule.min.js')
     
 	.js('Vue/pages/tickets/tickets.js', 'public/build/js/backend/tickets/tickets.min.js')

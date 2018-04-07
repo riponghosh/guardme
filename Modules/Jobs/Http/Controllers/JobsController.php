@@ -81,6 +81,11 @@ class JobsController extends Controller
         return view('jobs::job-listings');
     }
 
+    public function showSearchJobListings($search_type,$search_string)
+    {
+        return view('jobs::job-search-listings',compact('search_type','search_string'));
+    }
+
     public function getJobListings()
     {
         $jobs = $this->jobRepository->getJobListings(10);

@@ -38,6 +38,20 @@
                             Post new job
                         </a>
                     </li>
+                    <li>
+                        <div class="input-group" style="width: 123px;margin-top: 20px;">
+                              <div class="" style="z-index: 22;position: absolute;">
+                                  <select id="search_type" onchange="document.getElementById('search_field').setAttribute('placeholder',this.value)" style="width: 19px;height: 35px">
+                                        <option selected value="Find Jobs">Find Jobs</option>
+                                        <option value="Freelancers">Freelancers</option>
+                                    </select>
+                              </div>        
+                              <input type="text" class="form-control" name="x" id="search_field" placeholder="Find Jobs" style="padding-left: 15%;height: 35px" onkeypress="if(event.keyCode==13){window.location.assign('/jobs/search/'+this.getAttribute('placeholder')+'/'+this.value)}">
+                              <span class="">
+                                  <button class="btn btn-default" type="button" style="position: absolute;right: 0px;"><span class="icon-search3"></span></button>
+                              </span>
+                          </div>
+                    </li>
                 </ul>
 
             </nav><!-- #primary-menu end -->

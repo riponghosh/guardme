@@ -23,4 +23,5 @@ Route::group(['prefix' => 'account/jobs', 'middleware' => 'auth'], function () {
 
 
 Route::get('/jobs', 'JobsController@showJobListings');
+Route::get('/jobs/search/{search_type}/{search_string}', 'JobsController@showSearchJobListings');
 Route::get('/jobs/{jobSlug}', 'JobsController@showJobDetails');

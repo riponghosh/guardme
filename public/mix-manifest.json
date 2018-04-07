@@ -9,6 +9,7 @@
     "/build/css/site.main.min.css": "/build/css/site.main.min.css",
     "/build/css/app.vendors.bundle.css": "/build/css/app.vendors.bundle.css",
     "/build/css/app.bundle.css": "/build/css/app.bundle.css",
+    "/build/js/jobs/job-search-listings.min.js": "/build/js/jobs/job-search-listings.min.js",
     "/build/js/jobs/job-payment.min.js": "/build/js/jobs/job-payment.min.js",
     "/build/js/jobs/job-listings.min.js": "/build/js/jobs/job-listings.min.js",
     "/build/js/jobs/job-details.min.js": "/build/js/jobs/job-details.min.js",

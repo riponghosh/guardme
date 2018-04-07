@@ -3,6 +3,42 @@
 @section('content')
    <div class="content-wrap">
       <div class="container clearfix">
+      	<div class="col-md-12 form-inline">
+      		
+	      	<div class="input-group col-md-8" style="margin-top: 50px;margin-bottom: 50px;">
+              <div class="" style="z-index: 22;position: absolute;">
+                  <select id="search_type2" onchange="document.getElementById('search_field2').setAttribute('placeholder',this.value)" style="width: 19px;height: 35px" v-model="filter.search_type">
+                        <option value="Find Jobs" @if($search_type=="Find Jobs") {'selected'} @endif>Find Jobs</option>
+                        @if($search_type=="Freelancers")
+                        <option value="Freelancers" selected>Freelancers</option>
+                        <option value="Find Jobs">Find Jobs</option>
+                        @else
+                        <option value="Freelancers">Freelancers</option>
+                        <option value="Find Jobs" selected>Find Jobs</option>
+                        @endif
+                    </select>
+              </div>        
+              <input type="text" class="form-control" name="x" id="search_field2" placeholder="Find Jobs" style="padding-left: 5%;height: 35px" onkeypress="if(event.keyCode==13){window.location.assign('/jobs/search/'+this.getAttribute('placeholder')+'/'+this.value)}" value="{{$search_string}}" v-model="filter.search_string">
+              <span class="">
+                  <button class="btn btn-default hidden" type="button" style="right: 0px;"><span class="icon-search3"></span></button>
+              </span>
+          </div>
+	      	<div class="input-group col-md-4" style="margin-top: 50px;margin-bottom: 50px;"> 
+	      		<div class="form-inline">
+					<label for="inputState">Sort By: </label>
+					<select id="inputState" class="form-control" v-model="filter.sort">
+						<option value=""></option>
+						<option value="Ending Soon">Ending Soon</option>
+						<option value="Newly Added">Newly Added</option>
+						<option value="Starting Soon">Starting Soon</option>
+						<option value="Height Offer">Height Offer</option>
+						<option value="Lowest Offer">Lowest Offer</option>
+						<option value="Height Application">Height Application</option>
+						<option value="Lowest Application">Lowest Application</option>
+					</select>
+				</div>
+	      	</div>
+      	</div>
          <div class="col_three_fifth nobottommargin listings">
             <div class="listing-item" v-for="job in jobs.data" :class="{'ui loading' : jobs.loading}">
 
@@ -216,7 +252,7 @@
 @endsection
 
 @push('scripts')
-   <script src="/build/js/jobs/job-listings.min.js"></script>
+   <script src="/build/js/jobs/job-search-listings.min.js"></script>
    <script src="/build/js/star-rating.js"></script>
 
    <script>

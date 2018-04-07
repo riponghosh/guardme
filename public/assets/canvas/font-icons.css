@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'realestate-icons';
-	src:  url('icon-files/realestate.eot?ixg742');
-	src:  url('icon-files/realestate.eot?ixg742#iefix') format('embedded-opentype'),
-		url('icon-files/realestate.ttf?ixg742') format('truetype'),
-		url('icon-files/realestate.woff?ixg742') format('woff'),
-		url('icon-files/realestate.svg?ixg742#realestate') format('svg');
+	src:  url('/icon-files/realestate.eot?ixg742');
+	src:  url('/icon-files/realestate.eot?ixg742#iefix') format('embedded-opentype'),
+		url('/icon-files/realestate.ttf?ixg742') format('truetype'),
+		url('/icon-files/realestate.woff?ixg742') format('woff'),
+		url('/icon-files/realestate.svg?ixg742#realestate') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
